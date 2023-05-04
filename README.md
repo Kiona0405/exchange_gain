@@ -47,9 +47,10 @@
     cd 
     python src/exchange_gain.py --input history.csv --output result.csv
     ```
-    history.csvは楽天証券のホームページからダウンロードしたデータ
+    history.csvは楽天証券のホームページからダウンロードしたデータ  
+    結果はouputに指定した場所に出力される。  
 
 1. 結果の取得  
    result.csvを適当なアプリケーションで開いた後、"exgain_cumsum"列から対象年の為替差益を取得する。  
-   example) 2021年の場合->(2021/12/最後のexgain_cumsumの値) - (2020/12最後のexgain_cumsumの値)
+   example) 2021年の場合->(2021/12最後のexgain_cumsumの値) - (2020/12最後のexgain_cumsumの値)
 
