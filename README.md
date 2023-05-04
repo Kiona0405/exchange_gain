@@ -1,8 +1,8 @@
 # exchange_gain
 
 雑所得となる為替損益(exchange gain)の計算サポートツール. 
-使用は自己責任でお願いします。
-算出方法に間違いがあればIssueにて報告をお願いします。
+使用は自己責任でお願いします.  
+算出方法に間違いがあればIssueにて報告をお願いします.  
 
 ## How to use
 
@@ -28,25 +28,25 @@
    1. 取得したファイルに名前をつける.  
       ここでは便宜上history.csvとする.  
 
-    参考) ダウンロードファイルのヘッダー(2023/05/04)
+    参考) ダウンロードファイルのヘッダー(2023/05/04)  
     受渡日	約定日	口座区分	取引区分	対象証券名	決済通貨	単価	数量［株 /口］	受渡金額（受取）	受渡金額（受取）[円換算]	受渡金額（支払）	受渡金額（支払）[円換算]	為替レート	預り金
 
 1. レポジトリのダウンロード  
-   """bash
+   ```bash
    git clone https://github.com/Kiona0405/exgain.git
    cd exgain
-   """
+   ```
 
 1. ライブラリのインストール
-    """bash
+    ```bash
     pip install -r requirements.txt
-    """
+    ```
 
 1. プログラムの実行  
-    """bash
+    ```bash
     cd 
     python src/exchange_gain.py --input history.csv --output result.csv
-    """
+    ```
     history.csvは楽天証券のホームページからダウンロードしたデータ
 
 1. 結果の取得  
