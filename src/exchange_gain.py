@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 import logging
 import argparse
+from pathlib import Path
 import pandas as pd
 import numpy as np
 from datetime import datetime
@@ -30,7 +31,7 @@ def to_float(number: str):
 
 
 if __name__ == '__main__':
-    logging.basicConfig()
+    logging.basicConfig(level=logging.INFO)
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', required=True)
@@ -81,7 +82,7 @@ if __name__ == '__main__':
         if op_type in ['外株配当金', '米国株式売却']:
             dollar += row['受渡金額（受取）']
             yen += row['受渡金額（受取）[円換算]']
-            if row['口座区分'] not in ['NISA', '特別口座']:
+            if row['口座区分'] == '一般口座':
                 logger.warn('--------------')
                 logger.warn(f'一般口座での{op_type}が検出されました。')
                 logger.warn('為替差益とは別に譲渡益税の申告が必要です。')
@@ -95,7 +96,7 @@ if __name__ == '__main__':
             dollar -= row['受渡金額（支払）']
             yen -= row['受渡金額（支払）'] * my_rate
             exgain = (now_rate - my_rate) * row['受渡金額（支払）']
-            if row['口座区分'] not in ['NISA', '特別口座']:
+            if row['口座区分'] == '一般口座':
                 logger.warn('--------------')
                 logger.warn(f'一般口座での{op_type}が検出されました。')
                 logger.warn('為替差益とは別に譲渡益税の申告が必要です。')
@@ -118,3 +119,6 @@ if __name__ == '__main__':
     df['actual_rate'] = history_actual_rate[1:]
 
     df.to_csv(args.output)
+    logger.info(f'result is saved at {Path(args.output).resolve()}')
+
+    logger.info('successfuly done')
