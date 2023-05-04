@@ -8,20 +8,6 @@ from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
-KAWASE_TABLE_CLASS_NAME = 'table.tbl-data-padding3'
-KAWASE_COLUMNS = [
-    'number',
-    'order_date',
-    'currency',
-    'status',
-    'type',
-    'yakutei_date',
-    'ukewatashi_date',
-    'order_price',
-    'rate',
-    '_',
-]
-
 
 def to_float(number: str):
     if number == '-':
